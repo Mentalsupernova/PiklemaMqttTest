@@ -12,6 +12,9 @@ qt_add_executable(appPiklemaMqttTest
     main.cpp
     iqfilebase.h iqfilebase.cpp
     qunformatedtextfile.h qunformatedtextfile.cpp
+    ILogger.h
+    logger.h logger.cpp
+
 )
 
 qt_add_qml_module(appPiklemaMqttTest

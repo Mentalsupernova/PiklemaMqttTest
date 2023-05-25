@@ -11,7 +11,7 @@ class QUnformatedTextFile :public  IQFileBase
 public:
     explicit QUnformatedTextFile(QObject* parent = nullptr);
     QUnformatedTextFile();
-    QVector<QString> parseFile(const QString *  filename) override;
+    bool parseFile(const QString *  filename) override;
     void ReadFileCommand(const QString * filename) override;
     QVector<QString> getLines() const override;
 private:

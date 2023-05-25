@@ -10,20 +10,19 @@ QUnformatedTextFile::QUnformatedTextFile(QObject* parent) : IQFileBase(parent) {
 
 
 void QUnformatedTextFile::ReadFileCommand(const QString *  filename) {
-    lines = parseFile(filename);
+     parseFile(filename);
     for (const QString &line : lines) {
         emit lineRead(line);
     }
 }
 
 
-QVector<QString> QUnformatedTextFile::parseFile(const QString *filename){
+bool QUnformatedTextFile::parseFile(const QString *filename){
     QFile file("modules");
-    QVector<QString> lines;
+    bool res = false;
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)){
-
-    }
-
+        res = false;
+    }else{
 
     QTextStream in(&file);
     QString line = in.readLine();
@@ -32,7 +31,10 @@ QVector<QString> QUnformatedTextFile::parseFile(const QString *filename){
         line = in.readLine();
 
     }
-    return lines;
+    res = true;
+    }
+
+    return res;
 
 }
 

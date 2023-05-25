@@ -8,7 +8,7 @@
 
     public:
         explicit IQFileBase(QObject* parent = nullptr) : QObject(parent) {}
-        virtual QVector<QString> parseFile(const QString * filename) = 0;
+        virtual bool parseFile(const QString * filename) = 0;
         virtual void ReadFileCommand(const QString * filename) = 0;
         virtual QVector<QString> getLines() const = 0;
 

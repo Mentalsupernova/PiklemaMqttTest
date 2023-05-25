@@ -12,13 +12,23 @@ Window {
     color: "#474747"
 
 
+    ListModel {
+        id: loggerModel
+    }
 
+    Connections {
+        target: Logger
+        function onMessageLogged(message) {
+            listView.model.append({"message":message})
+            listView.positionViewAtEnd()
+        }
+    }
 
     GridLayout{
     Connections{
         target : fileReader
         function lineRead(lineContent){
-           logger_text.text = logger_text+lineContent
+           Logger.messageLogged(lineContent)
         }
     }
         rows:4
@@ -47,14 +57,19 @@ Window {
             Layout.row:2
             width: Window.width
             height : Window.height - (bar.height + options.height) -run_btn.height
-            color: "white"
             Layout.margins: 5
 
-            Text {
-                id: logger_text
-                text: "_________LOGER___________\n"
+        ListView {
+            id: listView
+            anchors.fill: parent
+            model: loggerModel
+
+            delegate: Text {
+                text: modelData
             }
         }
+        }
+
     GridLayout{
         Layout.row: 0
         columns: 2
@@ -117,7 +132,7 @@ GridLayout{
             Layout.row: 6
             columns: 2
             TextField{
-                id :filedialog
+            id:filePath
             placeholderText: "chose file"
             placeholderTextColor: "white"
             selectedTextColor: "white"
@@ -132,6 +147,19 @@ GridLayout{
                 height:100
                 Layout.column: 1
                 Layout.margins: 5
+                onClicked: fileDialog.open()
+            }
+            FileDialog {
+                id: fileDialog
+                title: "Please choose a file"
+                onAccepted: {
+                    console.log("You chose: " + fileDialog.selectedFile)
+                    filePath.text = fileDialog.selectedFile
+
+                }
+                onRejected: {
+                    Logger.messageLogged("213")
+                }
             }
         }
 }
