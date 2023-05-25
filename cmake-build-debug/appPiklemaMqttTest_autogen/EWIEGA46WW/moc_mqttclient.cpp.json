@@ -1,0 +1,97 @@
+{
+    "classes": [
+        {
+            "className": "MqttClient",
+            "object": true,
+            "qualifiedClassName": "MqttClient",
+            "signals": [
+                {
+                    "access": "public",
+                    "name": "connected",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "disconnected",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "topic",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "message",
+                            "type": "QString"
+                        }
+                    ],
+                    "name": "messagePublished",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "host",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "port",
+                            "type": "quint16"
+                        }
+                    ],
+                    "name": "connectToBroker",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "onConnected",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "onDisconnected",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "state",
+                            "type": "QMqttClient::ClientState"
+                        }
+                    ],
+                    "name": "onStateChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "message",
+                            "type": "QByteArray"
+                        },
+                        {
+                            "name": "topic",
+                            "type": "QMqttTopicName"
+                        }
+                    ],
+                    "name": "onMessageReceived",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "mqttclient.h",
+    "outputRevision": 68
+}

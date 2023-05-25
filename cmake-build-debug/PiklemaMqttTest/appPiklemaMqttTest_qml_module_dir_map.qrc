@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/PiklemaMqttTest">/Users/utsu/PiklemaMqttTest/cmake-build-debug/PiklemaMqttTest</file>
+
+  </qresource>
+</RCC>

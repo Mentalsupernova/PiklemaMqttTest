@@ -1,0 +1,230 @@
+[
+    {
+        "classes": [
+            {
+                "className": "IQFileBase",
+                "object": true,
+                "qualifiedClassName": "IQFileBase",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "lineContent",
+                                "type": "QString"
+                            }
+                        ],
+                        "name": "lineRead",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "error",
+                                "type": "QString"
+                            }
+                        ],
+                        "name": "fileErrorSignal",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filename",
+                                "type": "QString"
+                            }
+                        ],
+                        "name": "ReadFileCommand",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "iqfilebase.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "className": "Logger",
+                "object": true,
+                "qualifiedClassName": "Logger",
+                "signals": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "message",
+                                "type": "QString"
+                            }
+                        ],
+                        "name": "messageLogged",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "message",
+                                "type": "QString"
+                            }
+                        ],
+                        "name": "log",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    },
+                    {
+                        "access": "public",
+                        "name": "ILogger"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "logger.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "className": "MqttClient",
+                "object": true,
+                "qualifiedClassName": "MqttClient",
+                "signals": [
+                    {
+                        "access": "public",
+                        "name": "connected",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "disconnected",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "topic",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "message",
+                                "type": "QString"
+                            }
+                        ],
+                        "name": "messagePublished",
+                        "returnType": "void"
+                    }
+                ],
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "host",
+                                "type": "QString"
+                            },
+                            {
+                                "name": "port",
+                                "type": "quint16"
+                            }
+                        ],
+                        "name": "connectToBroker",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "onConnected",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "name": "onDisconnected",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "state",
+                                "type": "QMqttClient::ClientState"
+                            }
+                        ],
+                        "name": "onStateChanged",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "message",
+                                "type": "QByteArray"
+                            },
+                            {
+                                "name": "topic",
+                                "type": "QMqttTopicName"
+                            }
+                        ],
+                        "name": "onMessageReceived",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "mqttclient.h",
+        "outputRevision": 68
+    },
+    {
+        "classes": [
+            {
+                "className": "QUnformatedTextFile",
+                "object": true,
+                "qualifiedClassName": "QUnformatedTextFile",
+                "slots": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "filename",
+                                "type": "QString"
+                            }
+                        ],
+                        "name": "ReadFileCommand",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "IQFileBase"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "qunformatedtextfile.h",
+        "outputRevision": 68
+    }
+]

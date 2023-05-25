@@ -1,0 +1,18 @@
+"/Users/utsu/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/231.8770.66/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=/Users/utsu/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/231.8770.66/CLion.app/Contents/bin/ninja/mac/ninja" -G Ninja -S /Users/utsu/PiklemaMqttTest -B /Users/utsu/PiklemaMqttTest/cmake-build-debug
+-- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
+-- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
+CMake Warning (dev) at /opt/homebrew/lib/cmake/Qt6Core/Qt6CoreMacros.cmake:2690 (message):
+  Qt policy QTP0001 is not set: ':/qt/qml/' is the default resource prefix
+  for QML modules.  Check https://doc.qt.io/qt-6/qt-cmake-policy-qtp0001.html
+  for policy details.  Use the qt_policy command to set the policy and
+  suppress this warning.
+
+Call Stack (most recent call first):
+  /opt/homebrew/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake:445 (__qt_internal_setup_policy)
+  /opt/homebrew/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake:684 (qt6_add_qml_module)
+  CMakeLists.txt:22 (qt_add_qml_module)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/utsu/PiklemaMqttTest/cmake-build-debug

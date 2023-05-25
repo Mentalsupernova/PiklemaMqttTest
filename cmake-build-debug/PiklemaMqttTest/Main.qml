@@ -42,8 +42,6 @@ Window {
 
             onClicked: {
                 fileReader.ReadFileCommand(filePath.text)
-                mqttClient.connectToBroker(host.text,parseInt(port.text))
-                mqttClient.publishMessage(topic.text,fileReader.getLines())
             }
 
         }
@@ -99,7 +97,7 @@ Window {
                     placeholderText: "host"
                     placeholderTextColor: "white"
                     selectedTextColor: "white"
-                    text: "test.mosquitto.org"
+                    text: ""
                 }
                 TextField {
                     id: port
@@ -110,7 +108,7 @@ Window {
                     placeholderText: "port"
                     placeholderTextColor: "white"
                     selectedTextColor: "white"
-                    text: "1883"
+                    text: ""
                 }
                 TextField {
                     id: username
@@ -143,7 +141,7 @@ Window {
                     placeholderText: "topic"
                     placeholderTextColor: "white"
                     selectedTextColor: "white"
-                    text: "piklema/test"
+                    text: ""
                 }
                 GridLayout {
                     Layout.row: 6

@@ -1,0 +1,14 @@
+-rootPath
+/Users/utsu/PiklemaMqttTest
+-cmake-output
+-output-file
+/Users/utsu/PiklemaMqttTest/cmake-build-debug/.qt_plugins/Qt6_QmlPlugins_Imports_appPiklemaMqttTest.cmake
+-importPath
+/Users/utsu/PiklemaMqttTest/cmake-build-debug/PiklemaMqttTest
+-importPath
+/Users/utsu/PiklemaMqttTest/cmake-build-debug
+-importPath
+/opt/homebrew/share/qt/qml
+-qrcFiles
+/Users/utsu/PiklemaMqttTest/cmake-build-debug/.rcc/qmake_PiklemaMqttTest.qrc
+/Users/utsu/PiklemaMqttTest/cmake-build-debug/.rcc/appPiklemaMqttTest_raw_qml_0.qrc

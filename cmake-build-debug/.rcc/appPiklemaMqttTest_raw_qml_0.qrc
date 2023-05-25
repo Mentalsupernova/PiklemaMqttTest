@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="/PiklemaMqttTest/">
+    <file alias="Main.qml">/Users/utsu/PiklemaMqttTest/Main.qml</file>
+    <file alias="inputs_theme.js">/Users/utsu/PiklemaMqttTest/inputs_theme.js</file>
+  </qresource>
+</RCC>
+

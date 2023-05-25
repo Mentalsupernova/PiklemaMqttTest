@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/PiklemaMqttTest">
+    <file alias="qmldir">/Users/utsu/PiklemaMqttTest/cmake-build-debug/PiklemaMqttTest/qmldir</file>
+  </qresource>
+</RCC>
+

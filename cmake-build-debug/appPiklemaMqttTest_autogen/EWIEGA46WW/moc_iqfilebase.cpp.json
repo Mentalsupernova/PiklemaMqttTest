@@ -1,0 +1,54 @@
+{
+    "classes": [
+        {
+            "className": "IQFileBase",
+            "object": true,
+            "qualifiedClassName": "IQFileBase",
+            "signals": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "lineContent",
+                            "type": "QString"
+                        }
+                    ],
+                    "name": "lineRead",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "error",
+                            "type": "QString"
+                        }
+                    ],
+                    "name": "fileErrorSignal",
+                    "returnType": "void"
+                }
+            ],
+            "slots": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "filename",
+                            "type": "QString"
+                        }
+                    ],
+                    "name": "ReadFileCommand",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "iqfilebase.h",
+    "outputRevision": 68
+}

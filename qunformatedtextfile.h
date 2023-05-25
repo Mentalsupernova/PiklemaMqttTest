@@ -12,9 +12,9 @@ public:
     explicit QUnformatedTextFile(QObject* parent = nullptr);
     QUnformatedTextFile();
     bool parseFile(const QString *  filename) override;
-    QVector<QString> getLines() const override;
 public slots:
     void ReadFileCommand(const QString & filename) override;
+    QVector<QString> getLines() const override;
 private:
 
     QVector<QString> lines;

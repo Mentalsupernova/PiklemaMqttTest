@@ -1,0 +1,5 @@
+module PiklemaMqttTest
+typeinfo appPiklemaMqttTest.qmltypes
+prefer :/PiklemaMqttTest/
+Main 1.0 Main.qml
+

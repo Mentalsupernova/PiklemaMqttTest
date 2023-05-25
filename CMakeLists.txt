@@ -5,6 +5,7 @@ project(PiklemaMqttTest VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Mqtt)
 
 qt_standard_project_setup()
 
@@ -14,6 +15,7 @@ qt_add_executable(appPiklemaMqttTest
     qunformatedtextfile.h qunformatedtextfile.cpp
     ILogger.h
     logger.h logger.cpp
+    mqttclient.h mqttclient.cpp
 
 )
 
@@ -34,6 +36,7 @@ set_target_properties(appPiklemaMqttTest PROPERTIES
 target_link_libraries(appPiklemaMqttTest
     PRIVATE Qt6::Quick
 )
+target_link_libraries(appPiklemaMqttTest PRIVATE Qt6::Mqtt)
 
 install(TARGETS appPiklemaMqttTest
     BUNDLE DESTINATION .

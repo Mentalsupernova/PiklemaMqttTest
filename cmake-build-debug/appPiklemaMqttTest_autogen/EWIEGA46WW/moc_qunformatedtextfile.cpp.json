@@ -1,0 +1,30 @@
+{
+    "classes": [
+        {
+            "className": "QUnformatedTextFile",
+            "object": true,
+            "qualifiedClassName": "QUnformatedTextFile",
+            "slots": [
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "filename",
+                            "type": "QString"
+                        }
+                    ],
+                    "name": "ReadFileCommand",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "IQFileBase"
+                }
+            ]
+        }
+    ],
+    "inputFile": "qunformatedtextfile.h",
+    "outputRevision": 68
+}
