@@ -12,7 +12,8 @@ class Logger : public QObject, public ILogger
 public:
     static Logger& instance();
 
-    void log(const QString& message) override;
+public slots:
+    void log(const QString& message) ;
 
 signals:
     void messageLogged(const QString& message);

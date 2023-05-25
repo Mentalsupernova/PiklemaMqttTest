@@ -1,8 +1,9 @@
-import QtQuick
 import QtQuick.Window
-import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Dialogs
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+
 
 Window {
     width: 500
@@ -19,18 +20,13 @@ Window {
     Connections {
         target: Logger
         function onMessageLogged(message) {
+
             listView.model.append({"message":message})
             listView.positionViewAtEnd()
         }
     }
 
     GridLayout{
-    Connections{
-        target : fileReader
-        function lineRead(lineContent){
-           Logger.messageLogged(lineContent)
-        }
-    }
         rows:4
         columns : 1
 
@@ -40,6 +36,7 @@ Window {
             width:100
             height:100
             Layout.row:3
+            onClicked: fileReader.ReadFileCommand(filePath.text)
         }
 
         ProgressBar{
@@ -84,7 +81,9 @@ GridLayout{
     Layout.column: 0
         rows: 7
         TextField{
+            id : host
             placeholderText: "host"
+            text:""
             placeholderTextColor: "white"
             selectedTextColor: "white"
             color: "#7a7a7a"
@@ -92,7 +91,9 @@ GridLayout{
             Layout.margins: 5
         }
         TextField{
+            id : port
             placeholderText: "port"
+            text:""
             placeholderTextColor: "white"
             selectedTextColor: "white"
             color: "#7a7a7a"
@@ -101,7 +102,9 @@ GridLayout{
         }
 
         TextField{
+            id : username
             placeholderText: "username"
+            text:""
             placeholderTextColor: "white"
             selectedTextColor: "white"
             color: "#7a7a7a"
@@ -110,7 +113,9 @@ GridLayout{
         }
 
         TextField{
+            id : password
             placeholderText: "password"
+            text:""
             placeholderTextColor: "white"
             selectedTextColor: "white"
             color: "#7a7a7a"
@@ -119,7 +124,9 @@ GridLayout{
         }
 
         TextField{
+            id : topic
             placeholderText: "topic"
+            text:""
             placeholderTextColor: "white"
             selectedTextColor: "white"
             color: "#7a7a7a"
@@ -153,12 +160,14 @@ GridLayout{
                 id: fileDialog
                 title: "Please choose a file"
                 onAccepted: {
-                    console.log("You chose: " + fileDialog.selectedFile)
-                    filePath.text = fileDialog.selectedFile
+
+                    var selectedFile = fileDialog.currentFile
+                    filePath.text = selectedFile
+                    console.log("Selected file: " + selectedFile)
 
                 }
                 onRejected: {
-                    Logger.messageLogged("213")
+                    Logger.log("Error, file path is empty")
                 }
             }
         }

@@ -7,7 +7,6 @@ class ILogger
 {
 public:
     virtual ~ILogger() {}
-    virtual void log(const QString& message) = 0;
 };
 
 #endif // ILOGGER_H

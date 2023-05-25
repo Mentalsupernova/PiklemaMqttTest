@@ -4,31 +4,38 @@
 #include <fstream>
 #include <QFile>
 #include <QTextStream>
+#include "Logger.h"
 
 
 QUnformatedTextFile::QUnformatedTextFile(QObject* parent) : IQFileBase(parent) {}
 
 
-void QUnformatedTextFile::ReadFileCommand(const QString *  filename) {
-     parseFile(filename);
-    for (const QString &line : lines) {
-        emit lineRead(line);
-    }
+void QUnformatedTextFile::ReadFileCommand(const QString &  filename) {
+     parseFile(&filename);
 }
 
 
 bool QUnformatedTextFile::parseFile(const QString *filename){
-    QFile file("modules");
+    QString rawPath = *filename;
+    rawPath.replace("file:","");
+    QFile file(rawPath);
     bool res = false;
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)){
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        Logger::instance().log("Error, file open error!");
         res = false;
     }else{
 
+
     QTextStream in(&file);
     QString line = in.readLine();
+    int counter = 0;
     while (!line.isNull()) {
         lines.append(line);
+        QString loggerOut = "File line number %1 : %2";
+        QString tmp= loggerOut.arg(counter).arg(line);
+        Logger::instance().log(tmp);
         line = in.readLine();
+        counter++;
 
     }
     res = true;
