@@ -63,6 +63,7 @@ bool QUnformatedTextFile::parseFileNumerics(const QString *  filename) {
 
 }
 bool QUnformatedTextFile::parseFile(const QString *filename){
+    lines = QVector<QString>();
     QString rawPath = *filename;
     rawPath.replace("file:","");
     QFile file(rawPath);
