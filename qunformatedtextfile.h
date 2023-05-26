@@ -13,7 +13,7 @@ public:
     QUnformatedTextFile();
     bool parseFile(const QString *  filename) override;
 public slots:
-    void ReadFileCommand(const QString & filename) override;
+    bool ReadFileCommand(const QString & filename) override;
     QVector<QString> getLines() const override;
 private:
 

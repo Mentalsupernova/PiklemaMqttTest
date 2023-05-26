@@ -11,7 +11,7 @@
         virtual bool parseFile(const QString * filename) = 0;
 
    public slots:
-        virtual void ReadFileCommand(const QString& filename) = 0;
+        virtual bool ReadFileCommand(const QString& filename) = 0;
         virtual QVector<QString> getLines() const = 0;
     signals:
         void lineRead(const QString &lineContent);

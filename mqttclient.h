@@ -24,7 +24,7 @@ public slots:
     void onDisconnected();
     void onStateChanged(QMqttClient::ClientState state);
     void onMessageReceived(const QByteArray &message, const QMqttTopicName &topic);
-    void publishMessage(const QString &topic,const QVector<QString> &lines);
+    void publishMessage(const QString &topic,const QVector<QString> &lines,const QString &user,const QString &password);
 
 private:
     QMqttClient *client;

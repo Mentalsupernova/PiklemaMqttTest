@@ -10,8 +10,8 @@
 QUnformatedTextFile::QUnformatedTextFile(QObject* parent) : IQFileBase(parent) {}
 
 
-void QUnformatedTextFile::ReadFileCommand(const QString &  filename) {
-     parseFile(&filename);
+bool QUnformatedTextFile::ReadFileCommand(const QString &  filename) {
+     return parseFile(&filename);
 }
 
 

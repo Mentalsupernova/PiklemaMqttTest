@@ -37,19 +37,19 @@ void MqttClient::disconnectFromBroker()
     client->disconnectFromHost();
 }
 
-void MqttClient::publishMessage(const QString &topic,const QVector<QString> &lines)
+void MqttClient::publishMessage(const QString &topic,const QVector<QString> &lines,const QString &user,const QString &password)
 {
-    if (client->state() == QMqttClient::Connected) {
-
         for(auto i: lines){
             Logger::instance().log("Sending line : "+i);
+        QByteArray payload = i.toUtf8();
+        QMqttTopicName mqttTopic(topic);
+        QMqttPublishProperties properties;
+
+         emit client->usernameChanged(user);
+         emit client->passwordChanged(password);
+         client->subscribe(topic);
+         client->publish(mqttTopic, payload);
         }
-        //QByteArray payload = message.toUtf8();
-        //QMqttTopicName mqttTopic(topic);
-        //QMqttPublishProperties properties;
-        //client->publish(mqttTopic, payload);
-        //Logger::instance().log("message");
-    }
 }
 
 void MqttClient::onConnected()
