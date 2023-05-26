@@ -29,11 +29,11 @@ ___
    cd qtmqtt
    git checkout 6.5.0
    mkdir build && cd build
-   qt-configure-module ..
+   cmake ..
    
-   cmake --build .
+   make
 
-   cmake --install . --verbose
+   sudo make install
    ```
 3. Собрать проект
    ```
