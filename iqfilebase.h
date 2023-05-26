@@ -13,6 +13,7 @@
    public slots:
         virtual bool ReadFileCommand(const QString& filename) = 0;
         virtual QVector<QString> getLines() const = 0;
+    virtual void CommandsetNumericsState(const bool& state) =0;
     signals:
         void lineRead(const QString &lineContent);
         void fileErrorSignal(QString error);

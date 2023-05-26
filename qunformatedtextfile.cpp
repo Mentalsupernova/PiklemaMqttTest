@@ -9,12 +9,59 @@
 
 QUnformatedTextFile::QUnformatedTextFile(QObject* parent) : IQFileBase(parent) {}
 
+void QUnformatedTextFile::CommandsetNumericsState(const bool& state)  {
 
-bool QUnformatedTextFile::ReadFileCommand(const QString &  filename) {
-     return parseFile(&filename);
+    numericState  =state;
 }
 
+bool QUnformatedTextFile::ReadFileCommand(const QString &  filename) {
+    if(numericState){
+        return parseFileNumerics(&filename);
+    }
+        else{
 
+     return parseFile(&filename);
+        }
+}
+
+bool QUnformatedTextFile::checkLineNumerics(const QString line){
+     for(QChar c : line){
+         if(!c.isDigit()){
+             return false;
+         }
+     }
+     return true;
+}
+
+bool QUnformatedTextFile::parseFileNumerics(const QString *  filename) {
+    QString rawPath = *filename;
+    rawPath.replace("file:","");
+    QFile file(rawPath);
+    bool res = false;
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
+        Logger::instance().log("Error, file open error!");
+        res = false;
+    }else{
+
+
+    QTextStream in(&file);
+    QString line = in.readLine();
+    int counter = 0;
+    while (!line.isNull()) {
+             if(checkLineNumerics(line)){
+
+        lines.append(line);
+             }
+        line = in.readLine();
+        counter++;
+
+    }
+    res = true;
+    }
+
+    return res;
+
+}
 bool QUnformatedTextFile::parseFile(const QString *filename){
     QString rawPath = *filename;
     rawPath.replace("file:","");
@@ -31,9 +78,6 @@ bool QUnformatedTextFile::parseFile(const QString *filename){
     int counter = 0;
     while (!line.isNull()) {
         lines.append(line);
-        QString loggerOut = "File line number %1 : %2";
-        QString tmp= loggerOut.arg(counter).arg(line);
-        Logger::instance().log(tmp);
         line = in.readLine();
         counter++;
 

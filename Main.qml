@@ -4,11 +4,12 @@ import QtQuick.Dialogs
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtCharts
+
 Window {
     id: win
 
     color: "#474747"
-    height: 520
+    height: 550
     title: qsTr("Mqtt test client")
     visible: true
     width: 500
@@ -45,8 +46,9 @@ Window {
             onClicked: {
                 if(fileReader.ReadFileCommand(filePath.text)){
 
-                mqttClient.connectToBroker(host.text,parseInt(port.text))
-                mqttClient.publishMessage(topic.text,fileReader.getLines(),username.text,password.text)
+                    mqttClient.connectToBroker(host.text,parseInt(port.text))
+                        mqttClient.publishMessage(topic.text,fileReader.getLines(),username.text,password.text)
+
                 }else{
                     Logger.log("Error,something goes wrong")
                 }
@@ -89,10 +91,12 @@ Window {
 
             Layout.row: 0
             columns: 2
+            rows:2
 
             GridLayout{
                 Layout.column : 1
                 columns:2
+                Layout.row:0
 
             Label{
                 Layout.column: 0
@@ -102,6 +106,33 @@ Window {
                     Layout.column : 1
 
                 text:"0"
+            }
+
+
+            }
+
+            GridLayout{
+                Layout.column : 1
+                columns:2
+                Layout.row:1
+
+            Label{
+                Layout.column: 0
+                text:"Send only numerics : "
+            }
+                CheckBox{
+                    id : rowTypeChoise
+                    Layout.column : 1
+                        onCheckedChanged: {
+                                    if (checked) {
+                                        fileReader.CommandsetNumericsState(checked);
+                                    } else {
+                                        fileReader.CommandsetNumericsState(checked);
+                                    }
+                                }
+
+
+
             }
 
             }

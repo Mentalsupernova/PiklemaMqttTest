@@ -1,6 +1,7 @@
 #include "mqttclient.h"
 #include "logger.h"
 
+
 MqttClient::MqttClient(QObject *parent) : QObject(parent)
 {
     client = new QMqttClient(parent);
@@ -36,6 +37,7 @@ void MqttClient::disconnectFromBroker()
 {
     client->disconnectFromHost();
 }
+
 
 void MqttClient::publishMessage(const QString &topic,const QVector<QString> &lines,const QString &user,const QString &password)
 {
