@@ -17,6 +17,7 @@ signals:
     void connected();
     void disconnected();
     void messagePublished(const QString &topic, const QString &message);
+    void lineSend();
 
 public slots:
     void connectToBroker(const QString &host, quint16 port);

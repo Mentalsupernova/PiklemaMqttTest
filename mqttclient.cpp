@@ -51,6 +51,7 @@ void MqttClient::publishMessage(const QString &topic,const QVector<QString> &lin
          emit client->passwordChanged(password);
          client->subscribe(topic);
          client->publish(mqttTopic, payload);
+         emit lineSend();
         }
 }
 

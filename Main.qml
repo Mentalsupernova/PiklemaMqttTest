@@ -14,11 +14,20 @@ Window {
     visible: true
     width: 500
 
+    property int counter : 0
     ListModel {
         id: loggerModel
 
     }
 
+    Connections{
+        function lineSend(){
+            counter++
+            console.log(123)
+        }
+
+        target : mqttClient
+    }
 
     Connections {
         function onMessageLogged(message) {
@@ -105,7 +114,7 @@ Window {
                 TextField{
                     Layout.column : 1
 
-                text:"0"
+                text:counter
             }
 
 
@@ -130,9 +139,6 @@ Window {
                                         fileReader.CommandsetNumericsState(checked);
                                     }
                                 }
-
-
-
             }
 
             }
