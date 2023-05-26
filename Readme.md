@@ -23,15 +23,17 @@ ___
     ```
 2. Собрать из исходников Mqtt для QT6.5
     ```
-   git clone https://code.qt.io/qt/qtmqtt.git
-   
+   mkdir ~/temporal && cd ~/temporal
+   git clone https://github.com/qt/qtmqtt.git
+
    cd qtmqtt
    git checkout 6.5.0
    mkdir build && cd build
-   qmake -r ..
-   make 
-   sudo make install
+   qt-configure-module ..
+   
+   cmake --build .
 
+   cmake --install . --verbose
    ```
 3. Собрать проект
    ```
