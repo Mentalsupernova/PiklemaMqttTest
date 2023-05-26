@@ -3,12 +3,13 @@ import QtQuick.Layouts
 import QtQuick.Dialogs
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtCharts
 
 Window {
     id: win
 
     color: "#474747"
-    height: 500
+    height: 550
     title: qsTr("Mqtt test client")
     visible: true
     width: 500
@@ -16,6 +17,14 @@ Window {
     ListModel {
         id: loggerModel
 
+    }
+
+    Connections{
+        function lineSend(value){
+            console.log(123)
+        }
+
+        target : mqttClient
     }
 
     Connections {
@@ -39,40 +48,48 @@ Window {
             height: 100
             text: "Run"
             width: 100
+            Layout.margins:10
 
             onClicked: {
-                fileReader.ReadFileCommand(filePath.text)
+                if(fileReader.ReadFileCommand(filePath.text)){
+
+                    mqttClient.connectToBroker(host.text,parseInt(port.text))
+                        mqttClient.publishMessage(topic.text,fileReader.getLines(),username.text,password.text)
+
+                }else{
+                    Logger.log("Error,something goes wrong")
+                }
+
             }
 
         }
 
-        ProgressBar{ id: bar
-            //from: 0
-            //to:100
-            //width: win.width-20
-            width: Window.width
-
-            height: 50
-            Layout.row: 1
-            Layout.margins: 5
-        }
 
         Rectangle {
             id: logs
 
-            Layout.margins: 5
+            Layout.topMargin : 20
             Layout.row: 2
-            height: Window.height - (bar.height + options.height) - run_btn.height
+            height: 200
             width: Window.width
-
+            color : "#575352"
             ListView {
                 id: listView
 
                 anchors.fill: parent
+
                 model: loggerModel
 
-                delegate: Text {
-                    text: modelData
+                delegate: Rectangle	{
+                    Layout.topMargin: 10
+                    width : parent.width - 10
+                    height : 20
+                    color: "#4d4573"
+                    Text{
+                        color :"white"
+                        text: modelData
+                    }
+
                 }
             }
         }
@@ -81,6 +98,49 @@ Window {
 
             Layout.row: 0
             columns: 2
+            rows:2
+
+            GridLayout{
+                Layout.column : 1
+                columns:2
+                Layout.row:0
+
+            Label{
+                Layout.column: 0
+                text:"Line counter"
+            }
+                TextField{
+                    Layout.column : 1
+
+                text:"0"
+            }
+
+
+            }
+
+            GridLayout{
+                Layout.column : 1
+                columns:2
+                Layout.row:1
+
+            Label{
+                Layout.column: 0
+                text:"Send only numerics : "
+            }
+                CheckBox{
+                    id : rowTypeChoise
+                    Layout.column : 1
+                        onCheckedChanged: {
+                                    if (checked) {
+                                        fileReader.CommandsetNumericsState(checked);
+                                    } else {
+                                        fileReader.CommandsetNumericsState(checked);
+                                    }
+                                }
+            }
+
+            }
+
 
             GridLayout {
                 id: fields
@@ -93,29 +153,31 @@ Window {
 
                     Layout.margins: 5
                     Layout.row: 0
-                    color: "#7a7a7a"
+                    //color: "#7a7a7a"
+                    color: "white"
                     placeholderText: "host"
                     placeholderTextColor: "white"
                     selectedTextColor: "white"
-                    text: ""
+                    text: "test.mosquitto.org"
+
                 }
                 TextField {
                     id: port
 
                     Layout.margins: 5
                     Layout.row: 1
-                    color: "#7a7a7a"
+                    color: "white"
                     placeholderText: "port"
                     placeholderTextColor: "white"
                     selectedTextColor: "white"
-                    text: ""
+                    text: "1883"
                 }
                 TextField {
                     id: username
 
                     Layout.margins: 5
                     Layout.row: 2
-                    color: "#7a7a7a"
+                    color: "white"
                     placeholderText: "username"
                     placeholderTextColor: "white"
                     selectedTextColor: "white"
@@ -126,7 +188,7 @@ Window {
 
                     Layout.margins: 5
                     Layout.row: 3
-                    color: "#7a7a7a"
+                    color: "white"
                     placeholderText: "password"
                     placeholderTextColor: "white"
                     selectedTextColor: "white"
@@ -137,11 +199,11 @@ Window {
 
                     Layout.margins: 5
                     Layout.row: 4
-                    color: "#7a7a7a"
+                    color: "white"
                     placeholderText: "topic"
                     placeholderTextColor: "white"
                     selectedTextColor: "white"
-                    text: ""
+                    text: "test/topic"
                 }
                 GridLayout {
                     Layout.row: 6
@@ -152,7 +214,7 @@ Window {
 
                         Layout.column: 0
                         Layout.margins: 5
-                        color: "#7a7a7a"
+                        color: "white"
                         placeholderText: "chose file"
                         placeholderTextColor: "white"
                         selectedTextColor: "white"
@@ -161,7 +223,7 @@ Window {
                         Layout.column: 1
                         Layout.margins: 5
                         height: 100
-                        text: "chose file"
+                        text: "choose file"
                         width: 100
 
                         onClicked: fileDialog.open()

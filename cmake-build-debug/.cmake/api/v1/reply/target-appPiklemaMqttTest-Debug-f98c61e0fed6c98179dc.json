@@ -679,11 +679,11 @@
 			"id" : "appPiklemaMqttTest_qmlimportscan::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "appPiklemaMqttTest_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 0,
 			"id" : "appPiklemaMqttTest_autogen::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "appPiklemaMqttTest_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "appPiklemaMqttTest::@6890427a1f51a3e7e1df",

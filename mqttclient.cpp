@@ -39,8 +39,18 @@ void MqttClient::disconnectFromBroker()
 }
 
 
+void MqttClient::logStat(QString topic){
+    Logger::instance().log("______Поссылка______");
+    QString topicLine = "Топик : "+topic;
+    Logger::instance().log(topicLine);
+    QString countLine = "Строки : %1";
+    countLine = countLine.arg(QString::number(m_count));
+    Logger::instance().log(countLine);
+    Logger::instance().log("____________________");
+}
 void MqttClient::publishMessage(const QString &topic,const QVector<QString> &lines,const QString &user,const QString &password)
 {
+    m_count = 0;
         for(auto i: lines){
             Logger::instance().log("Sending line : "+i);
         QByteArray payload = i.toUtf8();
@@ -51,8 +61,10 @@ void MqttClient::publishMessage(const QString &topic,const QVector<QString> &lin
          emit client->passwordChanged(password);
          client->subscribe(topic);
          client->publish(mqttTopic, payload);
-         emit lineSend();
+         m_count++;
+         qDebug() << m_count;
         }
+        logStat(topic);
 }
 
 void MqttClient::onConnected()

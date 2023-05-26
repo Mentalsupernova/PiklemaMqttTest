@@ -12,12 +12,12 @@ public:
     ~MqttClient();
 
     void disconnectFromBroker();
+    void setCount(int value);
 
 signals:
     void connected();
     void disconnected();
     void messagePublished(const QString &topic, const QString &message);
-    void lineSend();
 
 public slots:
     void connectToBroker(const QString &host, quint16 port);
@@ -29,6 +29,8 @@ public slots:
 
 private:
     QMqttClient *client;
+    void logStat(QString topic);
+    int m_count;
 };
 
 #endif // MQTTCLIENT_H

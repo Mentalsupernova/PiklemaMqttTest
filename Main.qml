@@ -14,20 +14,11 @@ Window {
     visible: true
     width: 500
 
-    property int counter : 0
     ListModel {
         id: loggerModel
 
     }
 
-    Connections{
-        function lineSend(){
-            counter++
-            console.log(123)
-        }
-
-        target : mqttClient
-    }
 
     Connections {
         function onMessageLogged(message) {
@@ -54,9 +45,10 @@ Window {
 
             onClicked: {
                 if(fileReader.ReadFileCommand(filePath.text)){
-
+                    run_btn.enabled = false
                     mqttClient.connectToBroker(host.text,parseInt(port.text))
                         mqttClient.publishMessage(topic.text,fileReader.getLines(),username.text,password.text)
+                    run_btn.enabled = true
 
                 }else{
                     Logger.log("Error,something goes wrong")
@@ -102,20 +94,6 @@ Window {
             columns: 2
             rows:2
 
-            GridLayout{
-                Layout.column : 1
-                columns:2
-                Layout.row:0
-
-            Label{
-                Layout.column: 0
-                text:"Line counter"
-            }
-                TextField{
-                    Layout.column : 1
-
-                text:counter
-            }
 
 
             }
@@ -205,7 +183,7 @@ Window {
                     placeholderText: "topic"
                     placeholderTextColor: "white"
                     selectedTextColor: "white"
-                    text: "test/topic"
+                    text: "piklema/test"
                 }
                 GridLayout {
                     Layout.row: 6
@@ -249,4 +227,4 @@ Window {
             }
         }
     }
-}
+

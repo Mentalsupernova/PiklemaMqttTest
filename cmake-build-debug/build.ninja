@@ -446,7 +446,7 @@ build .qt_plugins/Qt6_QmlPlugins_Imports_appPiklemaMqttTest.cmake | ${cmake_ninj
 #############################################
 # Phony custom command for CMakeFiles/appPiklemaMqttTest_autogen_timestamp_deps
 
-build CMakeFiles/appPiklemaMqttTest_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/appPiklemaMqttTest_autogen_timestamp_deps: phony .rcc/qmlcache/appPiklemaMqttTest_qmlcache_loader.cpp /opt/homebrew/lib/QtMqtt.framework/Versions/A/QtMqtt /opt/homebrew/share/qt/libexec/moc /opt/homebrew/lib/QtQml.framework/Versions/A/QtQml /opt/homebrew/lib/QtQuick.framework/Versions/A/QtQuick
+build CMakeFiles/appPiklemaMqttTest_autogen_timestamp_deps | ${cmake_ninja_workdir}CMakeFiles/appPiklemaMqttTest_autogen_timestamp_deps: phony .rcc/qmlcache/appPiklemaMqttTest_qmlcache_loader.cpp /opt/homebrew/share/qt/libexec/moc /opt/homebrew/lib/QtQml.framework/Versions/A/QtQml /opt/homebrew/lib/QtMqtt.framework/Versions/A/QtMqtt /opt/homebrew/lib/QtQuick.framework/Versions/A/QtQuick
 
 
 #############################################

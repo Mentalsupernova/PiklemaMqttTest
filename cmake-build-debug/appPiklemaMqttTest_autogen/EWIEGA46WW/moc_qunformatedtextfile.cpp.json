@@ -14,6 +14,22 @@
                         }
                     ],
                     "name": "ReadFileCommand",
+                    "returnType": "bool"
+                },
+                {
+                    "access": "public",
+                    "name": "getLines",
+                    "returnType": "QList<QString>"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "state",
+                            "type": "bool"
+                        }
+                    ],
+                    "name": "CommandsetNumericsState",
                     "returnType": "void"
                 }
             ],

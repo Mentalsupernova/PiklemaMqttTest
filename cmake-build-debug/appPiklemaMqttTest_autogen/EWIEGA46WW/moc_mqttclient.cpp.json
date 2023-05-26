@@ -29,6 +29,17 @@
                     ],
                     "name": "messagePublished",
                     "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "value",
+                            "type": "int"
+                        }
+                    ],
+                    "name": "lineSend",
+                    "returnType": "void"
                 }
             ],
             "slots": [
@@ -81,6 +92,29 @@
                         }
                     ],
                     "name": "onMessageReceived",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "arguments": [
+                        {
+                            "name": "topic",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "lines",
+                            "type": "QList<QString>"
+                        },
+                        {
+                            "name": "user",
+                            "type": "QString"
+                        },
+                        {
+                            "name": "password",
+                            "type": "QString"
+                        }
+                    ],
+                    "name": "publishMessage",
                     "returnType": "void"
                 }
             ],
